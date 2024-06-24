@@ -56,3 +56,10 @@ cd tic-tac-toe-gui</code></pre>
 
 <h4>Restart and Exit</h4>
 <p>The <code>play_again_prompt</code> method prompts the user to restart or exit. The <code>restart_game</code> and <code>exit_game</code> methods handle these actions.</p>
+
+<h2>Contributing</h2>
+    <p>Contributions are welcome! Feel free to fork this project and submit pull requests with improvements or new features.</p>
+    
+   <h2>License</h2>
+    <p>This project is licensed under the MIT License. See the <a href="https://opensource.org/licenses/MIT">LICENSE</a> file for details.</p>
+    
