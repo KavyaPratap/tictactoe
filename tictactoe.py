@@ -80,6 +80,23 @@ class TicTacToeGUI:
                 self.play_again_prompt()
             else:
                 self.current_player = 'X'
+    """
+    This function handles the computer's move in the Tic-Tac-Toe game.
+
+    1. **Identify Available Spots:**
+       - Iterates through the board to find empty cells.
+       - Stores the indices of empty cells in `available_spots`.
+
+    2. **Determine Best Move:**
+       - Calls the `get_best_move` function to find the optimal move.
+
+    3. **Make the Move:**
+       - Updates the board and the corresponding button's text and color.
+
+    4. **Check for Game End:**
+       - Checks if the computer has won or if the game is a draw.
+       - Displays the appropriate message and prompts for a new game.
+    """
     def get_best_move(self):
         for i in range(9):
             if self.board[i] == '-':
