@@ -42,7 +42,7 @@ class TicTacToeGUI:
                 self.play_again_prompt()
             else:
                 self.current_player = 'O'
-            
+                # Schedule computer move to allow GUI update
                 self.root.after(200, self.computer_move)
 
     def computer_move(self):
@@ -96,11 +96,9 @@ class TicTacToeGUI:
 
         # Base case: Check for terminal states (win, loss, or draw)
         score = self.evaluate_board(board)
-        #add the condition to limit depth, so there's a possibility to win, its for limiting ai power. Without it, the best case is Draw, user can never win.
-        '''
-        if depth > 4: 
-            return 0 
-        '''
+        #if we add this then we can limit the power of ai [minimax approach], else we can never win....
+        # if depth > 4: 
+        #     return 0 
         if score != 0:
             # Prefer quicker wins (higher score) and slower losses (less negative score)
             # The depth adjustment helps the AI choose the fastest winning path.
@@ -111,6 +109,7 @@ class TicTacToeGUI:
         # Maximizing Player ('O' - Computer)
         if is_maximizing:
             best_score = -float('inf')
+
             player = 'O'
             for i in range(9):
                 if board[i] == '-':
@@ -140,7 +139,7 @@ class TicTacToeGUI:
         best_score = -float('inf')
         best_move = -1
         
-        for i in range(9):
+        for i in range(8):#if here 9 is there instead of 8.....it would be impossible to win.
             if self.board[i] == '-':
                 self.board[i] = 'O' 
                 move_score = self.minimax(self.board, 0, False) 
