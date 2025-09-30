@@ -1,17 +1,18 @@
+#greedy heuristic search.....
 import tkinter as tk
 import random
-#defining class for tictactoe gui
+
 class TicTacToeGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Tic Tac Toe")#setting title of app window
-        self.root.attributes("-fullscreen", True)#ensuring its full screen 
-        self.root.configure(bg='black')#adding black background 
+        self.root.title("Tic Tac Toe")
+        self.root.attributes("-fullscreen", True)
+        self.root.configure(bg='black') 
 
         self.current_player = None  
         self.board = ['-'] * 9
         self.buttons = []
-        #screen dimensions 
+
         screen_width = self.root.winfo_screenwidth()
         screen_height = self.root.winfo_screenheight()
         center_x = screen_width // 2
@@ -27,7 +28,7 @@ class TicTacToeGUI:
             button.grid(row=row, column=col)
             self.buttons.append(button)
             button.config(bg='black', fg='lime')
-         #first move randomly suffles between user and program 
+    
         if random.choice([True, False]):
             self.current_player = 'X'
         else:
@@ -48,23 +49,23 @@ class TicTacToeGUI:
                 self.current_player = 'O'
                 self.computer_move()
 
-    def check_winner(self):#checking winning condition 
+    def check_winner(self):
         winning_combinations = [(0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6)]
         for combo in winning_combinations:
             if self.board[combo[0]] == self.board[combo[1]] == self.board[combo[2]] != '-':
                 return True
         return False
-    #if above defined condition is meet, its a win.
+   
     def display_winner(self, winner):
         winner_label = tk.Label(root, text=f"{winner} wins!", font=('normal', 20), bg='black', fg='red')
         winner_label.pack()
         for button in self.buttons:
             button.config(state=tk.DISABLED)
-    #if no winning condition, declare draw
+    
     def display_draw(self):
         draw_label = tk.Label(root, text="It's a draw!", font=('normal', 20), bg='black', fg='orange')
         draw_label.pack()
-    # computer move
+ 
     def computer_move(self):
         available_spots = [i for i, val in enumerate(self.board) if val == '-']
         if available_spots:
@@ -138,3 +139,4 @@ class TicTacToeGUI:
 root = tk.Tk()
 tic_tac_toe = TicTacToeGUI(root)
 root.mainloop()
+
