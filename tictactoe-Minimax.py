@@ -96,6 +96,11 @@ class TicTacToeGUI:
 
         # Base case: Check for terminal states (win, loss, or draw)
         score = self.evaluate_board(board)
+        #add the condition to limit depth, so there's a possibility to win, its for limiting ai power. Without it, the best case is Draw, user can never win.
+        '''
+        if depth > 4: 
+            return 0 
+        '''
         if score != 0:
             # Prefer quicker wins (higher score) and slower losses (less negative score)
             # The depth adjustment helps the AI choose the fastest winning path.
